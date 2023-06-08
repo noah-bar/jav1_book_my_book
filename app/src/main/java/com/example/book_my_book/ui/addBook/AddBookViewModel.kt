@@ -1,10 +1,10 @@
-package com.example.book_my_book.ui.dashboard
+package com.example.book_my_book.ui.addBook
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class AddBookViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"
