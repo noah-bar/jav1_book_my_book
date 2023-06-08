@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Book_my_book</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">My books</string>
     <string name="title_add_book">Add</string>
-    <string name="home_title">My books</string>
 </resources>
