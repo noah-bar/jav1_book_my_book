@@ -22,16 +22,9 @@ class AddBookFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val addBookViewModel =
-            ViewModelProvider(this).get(AddBookViewModel::class.java)
-
         _binding = FragmentAddBookBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textAddBook
-        addBookViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
