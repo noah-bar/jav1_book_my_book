@@ -14,35 +14,40 @@
         android:gravity="top"
         >
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:paddingBottom="60dp"
-        >
+        android:paddingBottom="60dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            >
+            android:gravity="center">
+
             <Button
+                android:id="@+id/btnDisplayAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="@string/all"
-                ></Button>
+                android:text="@string/all"></Button>
+
             <Button
+                android:id="@+id/btnDisplayRented"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:backgroundTint="@color/white"
                 android:text="@string/rented"
-                ></Button>
+                android:textColor="@color/black"></Button>
         </LinearLayout>
+
         <SearchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/material_dynamic_neutral90"
-            ></SearchView>
+            android:background="@color/material_dynamic_neutral90"></SearchView>
     </LinearLayout>
 </LinearLayout>
