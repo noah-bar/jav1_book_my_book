@@ -33,10 +33,8 @@ class AddBookFragment : Fragment() {
     }
 
     private fun handleAddBookClick() {
-        val bookDao = BookMyBook.db.bookDao()
-        // Insérer des données
         val book = Book(title = "Mon livre", ISBN = "123", imageUrl = "foo")
-        bookDao.insert(book)
+        BookMyBook.db.bookDao().insert(book)
         Toast.makeText(requireContext(), "Livre créé", Toast.LENGTH_SHORT).show()
     }
 
