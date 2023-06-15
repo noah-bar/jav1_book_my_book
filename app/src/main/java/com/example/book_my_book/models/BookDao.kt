@@ -12,8 +12,11 @@ interface BookDao {
     @Query("SELECT * FROM books")
     fun getAll(): List<Book>
 
-    @Query("SELECT * FROM books WHERE title LIKE :title LIMIT 1")
+    @Query("SELECT * FROM books WHERE title LIKE :title limit 1")
     fun findByTitle(title: String): Book
+
+    @Query("SELECT * FROM books WHERE title LIKE '%' || :title || '%'")
+    fun searchBytitle(title: String): List<Book>
 
     @Insert
     fun insert(vararg books: Book)

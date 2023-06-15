@@ -9,15 +9,20 @@
     tools:context=".ui.home.HomeFragment">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="top"
         >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rwBooks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="bottom"
         android:orientation="vertical"
@@ -46,6 +51,7 @@
         </LinearLayout>
 
         <SearchView
+            android:id="@+id/svBooks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/material_dynamic_neutral90"></SearchView>
