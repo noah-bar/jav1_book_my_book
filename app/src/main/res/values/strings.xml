@@ -6,4 +6,6 @@
     <string name="bookISBN">ISBN</string>
     <string name="add">Ajouter</string>
     <string name="image_url">Url de l\'image</string>
+    <string name="all">Tous</string>
+    <string name="rented">Loués</string>
 </resources>
