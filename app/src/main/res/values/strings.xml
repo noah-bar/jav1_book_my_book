@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Book_my_book</string>
-    <string name="title_home">My books</string>
-    <string name="title_add_book">Add</string>
-    <string name="bookName">Livre</string>
+    <string name="title_home">Mes livres</string>
+    <string name="title_add_book">Ajouter un livre</string>
+    <string name="bookTitle">Titre</string>
     <string name="bookISBN">ISBN</string>
     <string name="add">Ajouter</string>
     <string name="image_url">Url de l\'image</string>

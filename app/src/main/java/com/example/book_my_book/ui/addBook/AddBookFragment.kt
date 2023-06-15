@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.book_my_book.BookMyBook
@@ -28,12 +29,25 @@ class AddBookFragment : Fragment() {
         _binding = FragmentAddBookBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val btnAddBook = root.findViewById<Button>(R.id.btnAddBook)
-        btnAddBook.setOnClickListener { handleAddBookClick() }
+        val etBookTitle = root.findViewById<EditText>(R.id.etBookTitle)
+        val etBookISBN = root.findViewById<EditText>(R.id.etBookISBN)
+        val etBookImage = root.findViewById<EditText>(R.id.etBookImage)
+        btnAddBook.setOnClickListener {
+            createBook(
+                etBookTitle.text.toString(),
+                etBookISBN.text.toString(),
+                etBookImage.text.toString()
+            )
+            //Clear form
+            etBookTitle.text.clear()
+            etBookISBN.text.clear()
+            etBookImage.text.clear()
+        }
         return root
     }
 
-    private fun handleAddBookClick() {
-        val book = Book(title = "Mon livre", ISBN = "123", imageUrl = "foo")
+    private fun createBook(title: String, ISBN: String, imageUrl: String) {
+        val book = Book(title = title, ISBN = ISBN, imageUrl = imageUrl)
         BookMyBook.db.bookDao().insert(book)
         Toast.makeText(requireContext(), "Livre créé", Toast.LENGTH_SHORT).show()
     }

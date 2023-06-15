@@ -13,12 +13,12 @@
         android:gravity="top"
         >
         <EditText
-            android:id="@+id/etBookName"
+            android:id="@+id/etBookTitle"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:inputType="text"
-            android:text="@string/bookName" />
+            android:hint="@string/bookTitle" />
 
         <EditText
             android:id="@+id/etBookISBN"
