@@ -1,16 +1,17 @@
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.book_my_book.R
 import com.example.book_my_book.models.Book
+import com.example.book_my_book.ui.bookDetails.BookDetailsFragment
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Callback
 
-class RwBookAdapter(private val books: List<Book>) :
+class RwBookAdapter(private val books: List<Book>, private val fragmentManager: FragmentManager) :
     RecyclerView.Adapter<RwBookAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,8 +35,15 @@ class RwBookAdapter(private val books: List<Book>) :
                     holder.ivBook.setImageResource(R.drawable.ic_book)
                 }
             })
+        holder.itemView.setOnClickListener { itemHandleClick(book) };
+    }
 
-        //Picasso.get().load("https://static.fnac-static.com/multimedia/Images/FR/NR/07/5c/7c/8150023/1520-1/tsp20160909172707/Harry-Potter-et-l-Enfant-Maudit.jpg").into(holder.ivBook)
+    private fun itemHandleClick(book: Book) {
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        val newFragment = BookDetailsFragment.newInstance(book.id)
+        fragmentTransaction.replace(R.id.homeLayout, newFragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
     override fun getItemCount(): Int {

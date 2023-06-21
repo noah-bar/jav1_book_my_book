@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,48 +12,56 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
         android:gravity="top"
-        >
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rwBooks"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
         android:orientation="vertical"
-        android:paddingBottom="60dp">
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rwBooks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:paddingBottom="60dp">
 
-            <Button
-                android:id="@+id/btnDisplayAll"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="@string/all"></Button>
+                android:gravity="center">
 
-            <Button
-                android:id="@+id/btnDisplayRented"
-                android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/btnDisplayAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/all"></Button>
+
+                <Button
+                    android:id="@+id/btnDisplayRented"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/rented"
+                    android:textColor="@color/black"></Button>
+            </LinearLayout>
+
+            <SearchView
+                android:id="@+id/svBooks"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:backgroundTint="@color/white"
-                android:text="@string/rented"
-                android:textColor="@color/black"></Button>
+                android:background="@color/material_dynamic_neutral90"></SearchView>
         </LinearLayout>
-
-        <SearchView
-            android:id="@+id/svBooks"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/material_dynamic_neutral90"></SearchView>
     </LinearLayout>
 </LinearLayout>

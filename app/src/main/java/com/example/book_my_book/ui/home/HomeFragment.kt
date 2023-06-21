@@ -11,12 +11,14 @@ import android.widget.Button
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.book_my_book.BookMyBook
 import com.example.book_my_book.R
 import com.example.book_my_book.databinding.FragmentHomeBinding
 import com.example.book_my_book.models.Book
+import com.example.book_my_book.models.Loan
 
 enum class DisplayMode {
     All,
@@ -72,17 +74,18 @@ class HomeFragment : Fragment() {
 
     private fun displayBooks(displayMode: DisplayMode = DisplayMode.All) {
         val books = BookMyBook.db.bookDao().getAll()
-        _rwBooks.adapter = RwBookAdapter(books)
+        _rwBooks.adapter = RwBookAdapter(books, parentFragmentManager)
     }
 
     private fun searchBook(query: String) {
         if (query.isEmpty()) {
             this.displayBooks(this._displayMode)
         } else {
-            val books = BookMyBook.db.bookDao().searchBytitle(query)
-            _rwBooks.adapter = RwBookAdapter(books)
+            val books = BookMyBook.db.bookDao().searchByTitle(query)
+            _rwBooks.adapter = RwBookAdapter(books, parentFragmentManager)
         }
     }
+
     private fun switchDisplayMode(displayMode: DisplayMode) {
         this._displayMode = displayMode
         when (this._displayMode) {
