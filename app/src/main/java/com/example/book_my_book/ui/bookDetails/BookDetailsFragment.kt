@@ -8,23 +8,18 @@ import android.view.ViewGroup
 import com.example.book_my_book.BookMyBook
 import com.example.book_my_book.R
 import com.example.book_my_book.models.Book
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_BOOK_ID = "book id"
 /**
  * A simple [Fragment] subclass.
  * Use the [BookDetailsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 class BookDetailsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var bookId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            bookId = it.getInt(ARG_BOOK_ID)
+            bookId = it.getInt("bookId")
         }
     }
 
@@ -40,23 +35,5 @@ class BookDetailsFragment : Fragment() {
     private fun displayBook(bookId: Int)
     {
         val book = BookMyBook.db.bookDao().findById(bookId)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param bookId book id.
-         * @return A new instance of fragment BookDetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(bookId: Int) =
-            BookDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_BOOK_ID, bookId)
-                }
-            }
     }
 }

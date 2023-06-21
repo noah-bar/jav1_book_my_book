@@ -1,9 +1,14 @@
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import com.example.book_my_book.R
 import com.example.book_my_book.models.Book
@@ -39,11 +44,12 @@ class RwBookAdapter(private val books: List<Book>, private val fragmentManager: 
     }
 
     private fun itemHandleClick(book: Book) {
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        val newFragment = BookDetailsFragment.newInstance(book.id)
-        fragmentTransaction.replace(R.id.homeLayout, newFragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+        val navHostFragment = fragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main)
+        val navController = navHostFragment?.findNavController()
+
+        val bundle = Bundle()
+        bundle.putInt("bookId", book.id)
+        navController!!.navigate(R.id.action_navigation_home_to_bookDetailsFragment, bundle)
     }
 
     override fun getItemCount(): Int {
