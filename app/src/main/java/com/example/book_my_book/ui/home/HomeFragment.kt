@@ -47,8 +47,14 @@ class HomeFragment : Fragment() {
         _rwBooks.layoutManager = LinearLayoutManager(requireContext())
         _swBooks = root.findViewById(R.id.svBooks)
         // add listener
-        _btnDisplayAll.setOnClickListener { switchDisplayMode(DisplayMode.All) }
-        _btnDisplayRented.setOnClickListener { switchDisplayMode(DisplayMode.Rented) }
+        _btnDisplayAll.setOnClickListener {
+            switchDisplayMode(DisplayMode.All)
+            displayBooks(this._displayMode)
+        }
+        _btnDisplayRented.setOnClickListener {
+            switchDisplayMode(DisplayMode.Rented)
+            displayBooks(this._displayMode)
+        }
         _swBooks.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 return true
@@ -60,7 +66,7 @@ class HomeFragment : Fragment() {
             }
         })
 
-
+        this.switchDisplayMode(this._displayMode)
         this.displayBooks()
 
         return root
@@ -102,7 +108,6 @@ class HomeFragment : Fragment() {
             }
             else -> {}
         }
-        displayBooks(this._displayMode)
     }
     
     override fun onDestroyView() {
