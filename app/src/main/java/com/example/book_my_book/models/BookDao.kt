@@ -19,6 +19,9 @@ interface BookDao {
     @Query("SELECT * FROM books WHERE title LIKE '%' || :title || '%'")
     fun searchByTitle(title: String): List<Book>
 
+    @Query("SELECT * FROM books INNER JOIN loans ON loans.bookId = books.id AND loans.status = \"lent\"")
+    fun getLoansBook(): List<Book>
+
     @Insert
     fun insert(vararg books: Book)
 

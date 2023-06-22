@@ -73,10 +73,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun displayBooks(displayMode: DisplayMode = DisplayMode.All) {
-        val books = BookMyBook.db.bookDao().getAll()
-        _rwBooks.adapter = RwBookAdapter(books, parentFragmentManager)
-    }
+        if (displayMode == DisplayMode.All) {
+            val books = BookMyBook.db.bookDao().getAll()
+            _rwBooks.adapter = RwBookAdapter(books, parentFragmentManager)
+        } else if (displayMode == DisplayMode.Rented) {
+            val books = BookMyBook.db.bookDao().getLoansBook()
+            _rwBooks.adapter = RwBookAdapter(books, parentFragmentManager)
+        }
 
+    }
     private fun searchBook(query: String) {
         if (query.isEmpty()) {
             this.displayBooks(this._displayMode)
@@ -103,6 +108,7 @@ class HomeFragment : Fragment() {
             }
             else -> {}
         }
+        displayBooks(this._displayMode)
     }
     
     override fun onDestroyView() {
