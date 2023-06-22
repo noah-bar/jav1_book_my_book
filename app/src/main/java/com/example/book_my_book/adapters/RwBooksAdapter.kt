@@ -35,18 +35,21 @@ class RwBookAdapter(private val books: List<Book>, private val fragmentManager: 
             holder.tvLoanTo.text = "Loué à: " + currentLoan.loanTo
             holder.tvLoanAt.text = "Loué le: " + currentLoan.loanAt
         }
+        if (book?.imageUrl != null &&  book?.imageUrl != "") {
+            Picasso.get()
+                .load(book.imageUrl)
+                .into(holder.ivBook, object : Callback {
+                    override fun onSuccess() {
+                        //Nothing to do
+                    }
 
-        Picasso.get()
-            .load(book.imageUrl)
-            .into(holder.ivBook, object : Callback {
-                override fun onSuccess() {
-                    //Nothing to do
-                }
-
-                override fun onError(e: Exception?) {
-                    holder.ivBook.setImageResource(R.drawable.ic_book)
-                }
-            })
+                    override fun onError(e: Exception?) {
+                        holder.ivBook.setImageResource(R.drawable.ic_book)
+                    }
+                })
+        } else {
+            holder.ivBook.setImageResource(R.drawable.ic_book)
+        }
         holder.itemView.setOnClickListener { itemHandleClick(book) };
     }
 
