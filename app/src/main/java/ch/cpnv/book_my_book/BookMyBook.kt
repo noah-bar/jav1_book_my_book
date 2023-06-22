@@ -1,4 +1,4 @@
-package com.example.book_my_book
+package ch.cpnv.book_my_book
 
 import androidx.room.Room
 import android.app.Application

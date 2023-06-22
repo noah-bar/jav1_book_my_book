@@ -1,4 +1,4 @@
-package com.example.book_my_book.models
+package ch.cpnv.book_my_book.models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,4 +1,4 @@
-package com.example.book_my_book.ui.home
+package ch.cpnv.book_my_book.ui.home
 
 import RwBookAdapter
 import android.graphics.Color
@@ -11,9 +11,9 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.book_my_book.BookMyBook
-import com.example.book_my_book.R
-import com.example.book_my_book.databinding.FragmentHomeBinding
+import ch.cpnv.book_my_book.BookMyBook
+import ch.cpnv.book_my_book.R
+import ch.cpnv.book_my_book.databinding.FragmentHomeBinding
 enum class DisplayMode {
     All,
     Rented,

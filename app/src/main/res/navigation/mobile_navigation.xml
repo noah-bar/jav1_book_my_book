@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.book_my_book.ui.home.HomeFragment"
+        android:name="ch.cpnv.book_my_book.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,12 +17,12 @@
 
     <fragment
         android:id="@+id/navigation_add_book"
-        android:name="com.example.book_my_book.ui.addBook.AddBookFragment"
+        android:name="ch.cpnv.book_my_book.ui.addBook.AddBookFragment"
         android:label="@string/title_add_book"
         tools:layout="@layout/fragment_add_book" />
     <fragment
         android:id="@+id/bookDetailsFragment"
-        android:name="com.example.book_my_book.ui.bookDetails.BookDetailsFragment"
+        android:name="ch.cpnv.book_my_book.ui.bookDetails.BookDetailsFragment"
         android:label="Mon livre"
         tools:layout="@layout/fragment_book_details" />
 

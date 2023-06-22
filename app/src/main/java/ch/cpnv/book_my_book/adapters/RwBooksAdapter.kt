@@ -9,9 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.book_my_book.BookMyBook
-import com.example.book_my_book.R
-import com.example.book_my_book.models.Book
+import ch.cpnv.book_my_book.BookMyBook
+import ch.cpnv.book_my_book.R
+import ch.cpnv.book_my_book.models.Book
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Callback
 
