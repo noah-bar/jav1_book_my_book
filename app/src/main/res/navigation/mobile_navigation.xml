@@ -24,8 +24,6 @@
         android:id="@+id/bookDetailsFragment"
         android:name="com.example.book_my_book.ui.bookDetails.BookDetailsFragment"
         android:label="Mon livre"
-        tools:layout="@layout/fragment_book_details">
-
-    </fragment>
+        tools:layout="@layout/fragment_book_details" />
 
 </navigation>
