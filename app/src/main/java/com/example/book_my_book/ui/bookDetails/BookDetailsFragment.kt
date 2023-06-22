@@ -1,7 +1,5 @@
 package com.example.book_my_book.ui.bookDetails
 
-import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -10,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
@@ -20,13 +16,8 @@ import com.example.book_my_book.R
 import com.example.book_my_book.databinding.FragmentBookDetailsBinding
 import com.example.book_my_book.models.Book
 import com.example.book_my_book.models.Loan
-import org.w3c.dom.Text
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.Date
-import java.util.Locale
-
 class BookDetailsFragment : Fragment() {
     private var bookId: Int? = null
     private var _binding: FragmentBookDetailsBinding? = null
@@ -93,7 +84,6 @@ class BookDetailsFragment : Fragment() {
         }
 
         if(_currentLoan == null) {
-
             val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
             val currentDate = LocalDate.now().format(formatter)
             _etLoanAt?.setText(currentDate.toString())

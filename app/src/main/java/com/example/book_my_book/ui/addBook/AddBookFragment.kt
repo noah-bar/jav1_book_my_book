@@ -12,8 +12,6 @@ import com.example.book_my_book.BookMyBook
 import com.example.book_my_book.R
 import com.example.book_my_book.databinding.FragmentAddBookBinding
 import com.example.book_my_book.models.Book
-import com.example.book_my_book.models.BookDao
-
 class AddBookFragment : Fragment() {
 
     private var _binding: FragmentAddBookBinding? = null
