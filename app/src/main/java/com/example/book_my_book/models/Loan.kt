@@ -13,4 +13,10 @@ data class Loan(
 
     @ColumnInfo(name = "loanAt")
     val loanAt: String,
+
+    @ColumnInfo(name = "status")
+    val status: String,
+
+    @ColumnInfo(name = "bookId")
+    val bookId: Int,
 )

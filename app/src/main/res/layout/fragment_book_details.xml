@@ -5,11 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".ui.addBook.AddBookFragment">
 
-    <Button
-        android:id="@+id/button2"
+    <TextView
+        android:id="@+id/twBookDetailsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Livre: "
+        android:textAlignment="center"
+        android:textSize="32dp" />
+
+    <EditText
+        android:id="@+id/etBookDetailsLoanTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Prêté à: "
+        android:inputType="text"
+        />
+
+    <EditText
+        android:id="@+id/etBookDetailsLoanAt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Prêté le: "
+        android:inputType="date" />
+
+    <Button
+        android:id="@+id/btnBookDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prêter" />
 </LinearLayout>
