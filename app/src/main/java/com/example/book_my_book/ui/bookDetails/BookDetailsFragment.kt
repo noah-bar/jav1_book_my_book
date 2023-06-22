@@ -21,6 +21,11 @@ import com.example.book_my_book.databinding.FragmentBookDetailsBinding
 import com.example.book_my_book.models.Book
 import com.example.book_my_book.models.Loan
 import org.w3c.dom.Text
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Date
+import java.util.Locale
 
 class BookDetailsFragment : Fragment() {
     private var bookId: Int? = null
@@ -88,7 +93,10 @@ class BookDetailsFragment : Fragment() {
         }
 
         if(_currentLoan == null) {
-            _etLoanAt.text.clear()
+
+            val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+            val currentDate = LocalDate.now().format(formatter)
+            _etLoanAt?.setText(currentDate.toString())
             _etLoanTo.text.clear()
             _btn.text = "Prêter"
         }
