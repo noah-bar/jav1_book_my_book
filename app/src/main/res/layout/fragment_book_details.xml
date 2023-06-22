@@ -15,15 +15,31 @@
         android:text="Livre: "
         android:textAlignment="center"
         android:textSize="32dp" />
-
-    <EditText
-        android:id="@+id/etBookDetailsLoanTo"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Prêté à: "
-        android:inputType="text"
-        />
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/etBookDetailsLoanTo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Prêté à: "
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:inputType="text"
+            />
+        <Button
+            android:id="@+id/btnGetContact"
+            android:layout_width="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:text="C"
+            >
+
+        </Button>
+    </LinearLayout>
 
     <EditText
         android:id="@+id/etBookDetailsLoanAt"

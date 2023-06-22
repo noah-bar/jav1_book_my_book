@@ -1,6 +1,10 @@
 package ch.cpnv.book_my_book.ui.bookDetails
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -8,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
@@ -64,6 +69,10 @@ class BookDetailsFragment : Fragment() {
         bookId?.let { getBook(it) }
 
         _btn.setOnClickListener { handleClick() }
+        root.findViewById<Button>(R.id.btnGetContact).setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+            resultLauncher.launch(intent)
+        }
         // Inflate the layout for this fragment
         return root
     }
@@ -107,5 +116,31 @@ class BookDetailsFragment : Fragment() {
     private fun createLoan(loanTo: String, loanAt: String) {
         val newLoan = Loan(loanTo=loanTo, loanAt=loanAt, bookId=_book.id, status="lent")
         BookMyBook.db.loanDao().insert(newLoan);
+    }
+
+    @SuppressLint("Range")
+    private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Intent? = result.data
+            val contactUri = data?.data
+            val cursor = contactUri?.let {
+                requireActivity().contentResolver.query(
+                    it,
+                    null,
+                    null,
+                    null,
+                    null
+                )
+            }
+
+            cursor?.use {
+                if (it.moveToFirst()) {
+                    _etLoanTo?.setText(
+                        it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
+                        )
+                    )
+                }
+            }
+        }
     }
 }
