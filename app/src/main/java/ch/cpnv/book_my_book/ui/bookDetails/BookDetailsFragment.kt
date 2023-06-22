@@ -2,6 +2,7 @@ package ch.cpnv.book_my_book.ui.bookDetails
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -29,7 +30,7 @@ class BookDetailsFragment : Fragment() {
     private lateinit var _twTitle: TextView
     private lateinit var _etLoanTo: EditText
     private lateinit var _etLoanAt: EditText
-    private lateinit var _btn: Button
+    private lateinit var _btnLoanBook: Button
 
     private lateinit var _book: Book
     private var _currentLoan: Loan? = null
@@ -62,26 +63,55 @@ class BookDetailsFragment : Fragment() {
     ): View? {
         _binding = FragmentBookDetailsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val btnDeleteBook = root.findViewById<Button>(R.id.btnDeleteBook)
+        val btnGetContacts = root.findViewById<Button>(R.id.btnGetContacts)
         _twTitle = root.findViewById(R.id.twBookDetailsTitle)
         _etLoanTo = root.findViewById(R.id.etBookDetailsLoanTo)
         _etLoanAt = root.findViewById(R.id.etBookDetailsLoanAt)
-        _btn = root.findViewById(R.id.btnBookDetails)
+        _btnLoanBook = root.findViewById(R.id.btnLoanBook)
         bookId?.let { getBook(it) }
 
-        _btn.setOnClickListener { handleClick() }
-        root.findViewById<Button>(R.id.btnGetContact).setOnClickListener {
+
+        //Listeners
+        _btnLoanBook.setOnClickListener { handleClick() }
+
+        btnGetContacts.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
             resultLauncher.launch(intent)
         }
+
+        btnDeleteBook.setOnClickListener {
+            bookId?.let {
+                val builder = AlertDialog.Builder(this.requireContext())
+                builder.setMessage("Êtes-vous sur de vouloir supprimer ce livre ?")
+                    .setCancelable(false)
+                    .setPositiveButton("Oui") { _, _ ->
+                        deleteBook(it)
+                    }
+                    .setNegativeButton("Non") { dialog, _ ->
+                        // Dismiss the dialog
+                        dialog.dismiss()
+                    }
+                val alert = builder.create()
+                alert.show()
+            }
+        }
+
         // Inflate the layout for this fragment
         return root
     }
 
     private fun getBook(bookId: Int) {
-        _book= BookMyBook.db.bookDao().findById(bookId)
+        _book = BookMyBook.db.bookDao().findById(bookId)
         _twTitle.text = _book.title
 
         getCurrentLoan()
+    }
+
+    private fun deleteBook(bookId: Int) {
+        BookMyBook.db.loanDao().deleteByBookId(bookId)
+        BookMyBook.db.bookDao().deleteById(bookId)
+        requireActivity().onBackPressedDispatcher.onBackPressed();
     }
 
     private fun getCurrentLoan() {
@@ -89,7 +119,7 @@ class BookDetailsFragment : Fragment() {
         _currentLoan?.let {
             _etLoanAt?.setText(it.loanAt)
             _etLoanTo?.setText(it.loanTo)
-            _btn.text = "Rendre"
+            _btnLoanBook.text = "Rendre"
         }
 
         if(_currentLoan == null) {
@@ -97,7 +127,7 @@ class BookDetailsFragment : Fragment() {
             val currentDate = LocalDate.now().format(formatter)
             _etLoanAt?.setText(currentDate.toString())
             _etLoanTo.text.clear()
-            _btn.text = "Prêter"
+            _btnLoanBook.text = "Prêter"
         }
     }
 

@@ -21,4 +21,7 @@ interface LoanDao {
     @Delete
     fun delete(loan: Loan)
 
+    @Query("DELETE FROM loans WHERE bookId=:bookId")
+    fun deleteByBookId(bookId: Int)
+
 }

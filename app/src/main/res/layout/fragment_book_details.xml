@@ -7,36 +7,49 @@
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".ui.addBook.AddBookFragment">
-
-    <TextView
-        android:id="@+id/twBookDetailsTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Livre: "
-        android:textAlignment="center"
-        android:textSize="32dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         >
+        <TextView
+            android:id="@+id/twBookDetailsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Livre: "
+            android:layout_marginStart="40dp"
+            android:textAlignment="center"
+            android:textSize="32dp"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/btnDeleteBook"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#F60000"
+            android:text="D" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <EditText
             android:id="@+id/etBookDetailsLoanTo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Prêté à: "
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:inputType="text"
-            />
+            android:ems="10"
+            android:hint="Prêté à: "
+            android:inputType="text" />
+
         <Button
-            android:id="@+id/btnGetContact"
+            android:id="@+id/btnGetContacts"
             android:layout_width="40dp"
-            android:layout_marginLeft="10dp"
             android:layout_height="wrap_content"
-            android:text="C"
-            >
+            android:layout_marginLeft="10dp"
+            android:text="C">
 
         </Button>
     </LinearLayout>
@@ -51,7 +64,7 @@
         android:inputType="date" />
 
     <Button
-        android:id="@+id/btnBookDetails"
+        android:id="@+id/btnLoanBook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Prêter" />
