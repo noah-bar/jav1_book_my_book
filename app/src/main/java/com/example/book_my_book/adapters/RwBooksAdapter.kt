@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.book_my_book.BookMyBook
 import com.example.book_my_book.R
 import com.example.book_my_book.models.Book
 import com.squareup.picasso.Picasso
@@ -26,8 +27,15 @@ class RwBookAdapter(private val books: List<Book>, private val fragmentManager: 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val book = books[position]
+        val currentLoan = BookMyBook.db.loanDao().getLastByBookId(book.id)
+
         holder.tvTitle.text = book.title
         holder.tvISBN.text = book.ISBN
+        if (currentLoan != null) {
+            holder.tvLoanTo.text = "Loué à: " + currentLoan.loanTo
+            holder.tvLoanAt.text = "Loué le: " + currentLoan.loanAt
+        }
+
         Picasso.get()
             .load(book.imageUrl)
             .into(holder.ivBook, object : Callback {
@@ -58,5 +66,7 @@ class RwBookAdapter(private val books: List<Book>, private val fragmentManager: 
         val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
         val tvISBN: TextView = itemView.findViewById(R.id.tvISBN)
         val ivBook: ImageView = itemView.findViewById(R.id.ivBook)
+        val tvLoanTo: TextView = itemView.findViewById(R.id.tvLoanTo)
+        val tvLoanAt: TextView = itemView.findViewById(R.id.tvLoanAt)
     }
 }

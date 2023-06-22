@@ -77,7 +77,7 @@ class HomeFragment : Fragment() {
             val books = BookMyBook.db.bookDao().getAll()
             _rwBooks.adapter = RwBookAdapter(books, parentFragmentManager)
         } else if (displayMode == DisplayMode.Rented) {
-            val books = BookMyBook.db.bookDao().getLoansBook()
+            val books = BookMyBook.db.bookDao().getLoansBooks()
             _rwBooks.adapter = RwBookAdapter(books, parentFragmentManager)
         }
 
