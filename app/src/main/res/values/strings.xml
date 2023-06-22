@@ -8,4 +8,11 @@
     <string name="image_url">Url de l\'image</string>
     <string name="all">Tous</string>
     <string name="rented">Loués</string>
+    <string name="book_image_description">Image du livre</string>
+    <string name="book">Livre</string>
+    <string name="delete">D</string>
+    <string name="loanTo">Prêté à:</string>
+    <string name="contact">C</string>
+    <string name="LoanAt">Prêté le:</string>
+    <string name="lend">Prêter</string>
 </resources>

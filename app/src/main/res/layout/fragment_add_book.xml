@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="10dp"
         android:gravity="top"
         >
         <EditText
@@ -18,7 +19,9 @@
             android:layout_height="70dp"
             android:layout_weight="1"
             android:inputType="text"
-            android:hint="@string/bookTitle" />
+            android:autofillHints="title"
+            android:hint="@string/bookTitle"
+            tools:ignore="VisualLintTextFieldSize" />
 
         <EditText
             android:id="@+id/etBookISBN"
@@ -28,7 +31,9 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="text"
-            android:hint="@string/bookISBN" />
+            android:autofillHints="ISBN"
+            android:hint="@string/bookISBN"
+            tools:ignore="VisualLintTextFieldSize" />
 
         <EditText
             android:id="@+id/etBookImage"
@@ -38,13 +43,17 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="text"
-            android:hint="@string/image_url" />
+            android:autofillHints="Image url"
+            android:hint="@string/image_url"
+            tools:ignore="VisualLintTextFieldSize" />
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:paddingBottom="60dp"
         >
 
@@ -52,7 +61,8 @@
             android:id="@+id/btnAddBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add">
+            android:text="@string/add"
+            tools:ignore="VisualLintButtonSize">
 
         </Button>
     </LinearLayout>

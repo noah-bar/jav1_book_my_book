@@ -6,21 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp"
+    android:padding="10dp"
     tools:context=".ui.home.HomeFragment">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="top"
         android:orientation="vertical"
-        >
+        tools:ignore="UselessParent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="top"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="NestedWeights">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rwBooks"
@@ -45,7 +46,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="@string/all"></Button>
+                    android:text="@string/all"
+                    tools:ignore="ButtonStyle"></Button>
 
                 <Button
                     android:id="@+id/btnDisplayRented"
@@ -54,7 +56,8 @@
                     android:layout_margin="8dp"
                     android:backgroundTint="@color/white"
                     android:text="@string/rented"
-                    android:textColor="@color/black"></Button>
+                    android:textColor="@color/black"
+                    tools:ignore="ButtonStyle"></Button>
             </LinearLayout>
 
             <SearchView

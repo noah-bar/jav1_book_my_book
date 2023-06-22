@@ -11,22 +11,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
+
         <TextView
             android:id="@+id/twBookDetailsTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Livre: "
-            android:layout_marginStart="40dp"
-            android:textAlignment="center"
-            android:textSize="32dp"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="48dp"
             android:layout_weight="1"
-            />
+            android:text="@string/book"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            tools:ignore="TextSizeCheck" />
+
         <Button
             android:id="@+id/btnDeleteBook"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:backgroundTint="#F60000"
-            android:text="D" />
+            android:text="@string/delete"
+            tools:ignore="TouchTargetSizeCheck,VisualLintBounds,TextContrastCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -36,20 +39,24 @@
 
         <EditText
             android:id="@+id/etBookDetailsLoanTo"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Prêté à: "
-            android:inputType="text" />
+            android:hint="@string/loanTo"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:autofillHints=""
+            tools:ignore="VisualLintTextFieldSize" />
 
         <Button
             android:id="@+id/btnGetContacts"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="C">
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/contact"
+            tools:ignore="TouchTargetSizeCheck,VisualLintBounds">
 
         </Button>
     </LinearLayout>
@@ -60,12 +67,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Prêté le: "
-        android:inputType="date" />
+        android:hint="@string/LoanAt"
+        android:inputType="date"
+        android:minHeight="48dp"
+        android:autofillHints=""
+        tools:ignore="VisualLintTextFieldSize" />
 
     <Button
         android:id="@+id/btnLoanBook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Prêter" />
+        android:text="@string/lend"
+        tools:ignore="VisualLintButtonSize" />
 </LinearLayout>
